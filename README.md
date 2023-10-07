@@ -3,6 +3,7 @@ To estimate the relationship between individual receiver noise, baseline distanc
 
 ## System Model
 We can start by modeling the left and right position estimates $p_l, p_r$ as 2D Gaussian random variables, centered at either end of the baseline with length $d$. Both variables have the same distribution, with equal variance $\sigma_i^2$ in both dimensions:
+
 $$
 \begin{align*}
     p_l &\sim \mathcal{N}\left(\begin{bmatrix} 0 \\ 0 \end{bmatrix}, \Sigma\right) \\
@@ -12,6 +13,7 @@ $$
 $$
 
 We can then compute the heading estimate $\tilde{\theta}$ as the angle between the baseline and the x-axis, and compare it to our true heading $\theta$ to compute the heading estimate error. Note that we want to compute the **signed** heading estimate error, so we need to take into account the sign of the y-component of the baseline vector:
+
 $$
 \begin{align*}
     v &= p_r - p_l, \ \hat{v} = \frac{v}{\|v\|} \\
@@ -21,6 +23,7 @@ $$
     &= \tilde{\theta} - 0 = \tilde{\theta}
 \end{align*}
 $$
+
 Therefore the heading estimate error is $\tilde{\theta}$, which we have now expressed in terms of the baseline length $d$ and the individual receiver noise $\sigma_i^2$.
 
 ## Monte-Carlo Simulation
